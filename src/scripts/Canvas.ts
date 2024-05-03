@@ -14,7 +14,7 @@ export class Canvas extends Three {
 
     this.init()
 
-    this.simulator = new Simulator(this.renderer, [512 * 2, 512 * 2])
+    this.simulator = new Simulator(this.renderer, [512 * 2, 512 * 1])
 
     this.points = this.createPoints()
     window.addEventListener('resize', this.resize.bind(this))

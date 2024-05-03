@@ -14,6 +14,6 @@ void main() {
 
   vLife = sim.z;
 
-  gl_PointSize = 1.0 * (vLife + 1.0);
+  gl_PointSize = vLife;
   gl_Position = vec4(sim.xy / asp, 0.0, 1.0);
 }

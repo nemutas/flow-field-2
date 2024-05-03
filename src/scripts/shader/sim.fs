@@ -33,14 +33,15 @@ void main() {
 
   vec2 p;
   if (uFrame == 1) {
-    p = hash(vec3(vUv, 0.1)).xy * 2.0 - 1.0;
+    vec3 h = hash(vec3(vUv, 0.1));
+    p = h.xy * 2.0 - 1.0;
     p *= asp;
-    outColor = vec4(p, 0.0, 0.0);
+    outColor = vec4(p, h.z, 0.0);
     return;
   }
 
   float angle = cnoise(b.xy * 2.0) * 2.0 - 1.0;
-  vec2 d = normalize(b.xy + vec2(1, 0) - b.xy) * rot(angle * PI + uTime * 0.3);
+  vec2 d = vec2(1, 0) * rot(angle * PI + uTime * 0.3);
 
   p = b.xy + d * uDeltaTime * 0.2;
   float life = min(b.z + uDeltaTime * 0.3, 1.0);
@@ -53,7 +54,7 @@ void main() {
   }
 
   vec2 n = normalize(vUv * 2.0 - 1.0);
-  p = mix(p, n, 0.0015);
+  p = mix(p, n, 0.0012);
 
   outColor = vec4(p, life, 0.0);
 }

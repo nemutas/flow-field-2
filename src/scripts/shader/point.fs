@@ -6,5 +6,5 @@ out vec4 outColor;
 in float vLife;
 
 void main() {
-  outColor = vec4(1, 1, 1, vLife * 0.5);
+  outColor = vec4(1, 1, 1, vLife * 0.7);
 }
