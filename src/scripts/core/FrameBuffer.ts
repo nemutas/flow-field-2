@@ -4,6 +4,7 @@ export type Options = {
   dpr?: number
   matrixAutoUpdate?: boolean
   size?: [number, number]
+  renderTargetOptions?: THREE.RenderTargetOptions
 }
 
 export abstract class FrameBuffer {
@@ -41,13 +42,7 @@ export abstract class FrameBuffer {
   }
 
   protected createRenderTarget() {
-    const rt = new THREE.WebGLRenderTarget(this.size.width, this.size.height, {
-      format: THREE.RGBAFormat,
-      type: THREE.FloatType,
-      minFilter: THREE.NearestFilter,
-      magFilter: THREE.NearestFilter,
-    })
-    return rt
+    return new THREE.WebGLRenderTarget(this.size.width, this.size.height, this.options?.renderTargetOptions)
   }
 
   private createScreen(material: THREE.RawShaderMaterial) {

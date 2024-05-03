@@ -19,7 +19,7 @@ export class Simulator extends BackBuffer {
       fragmentShader,
       glslVersion: '300 es',
     })
-    super(renderer, material, { size, dpr: 1 })
+    super(renderer, material, { size, dpr: 1, renderTargetOptions: { type: THREE.FloatType, minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter } })
   }
 
   resize() {
